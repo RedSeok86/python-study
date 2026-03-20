@@ -35,7 +35,7 @@ jobs:
 
       - name: Upload files to S3
         run: |
-          aws s3 sync ./my-web-test s3://aimie-dev-cicd-01/web-test/ --delete
+          aws s3 sync "${{ vars.LOCAL_SOURCE_DIR }}" "${{ secrets.S3_URI }}" --delete
 
       - name: Run deploy script on EC2 via SSM
         run: |
